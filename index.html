@@ -216,10 +216,20 @@
         // Array of colors to choose from
         const colors = ['#856d4d', "#9c2542", "#28589c", "#007f66", "#fcc200", "#f29cb7", "#763568", "#fd3a4a"];
         
+        let previousColor = null;
+        
         // Apply a random color to each link
         const links = document.querySelectorAll('a');
         links.forEach(link => {
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            let randomColor;
+            
+            // Keep picking until we get a different color
+            do {
+                randomColor = colors[Math.floor(Math.random() * colors.length)];
+            } while (randomColor === previousColor && colors.length > 1);
+            
+            previousColor = randomColor;
+            
             link.style.color = randomColor;
             
             // Keep the same color on hover
