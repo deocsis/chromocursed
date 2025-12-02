@@ -209,5 +209,34 @@
         window.scrollTo(0, 0);
     });
 </script>
+<script>
+    window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+        
+        // Array of colors to choose from
+        const colors = ['#856d4d', "#9c2542", "#28589c", "#007f66", "#fcc200", "#f29cb7"];
+        
+        // Apply a random color to each link
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            link.style.color = randomColor;
+            
+            // Keep the same color on hover
+            link.addEventListener('mouseenter', function() {
+                this.style.color = randomColor;
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.color = randomColor;
+            });
+            
+            // Keep the same color for visited links
+            link.addEventListener('click', function() {
+                this.style.color = randomColor;
+            });
+        });
+    });
+</script>
 </body>
 </html>
